@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <div th:insert="navbar :: navbar">  </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div th:insert="sidebar :: sidebar">  </div>
+        </div>
+        <div class="col-md-9">
+            <div class="container mb-3" style="min-height: 100vh;">
+                <h1>Agregar noticia</h1>
+                <form th:action="@{/agregarnoticia}" th:object="${noticia}" method="post">
+                    <input type="hidden" name="nomusuario"  th:value="${#authentication.getPrincipal().getUsername()}" th:name="nomUsuario" >
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputEncabezado">Encabezado</label>
+                                <input type="text" th:field="*{encabezado}" name="encabezado" class="form-control" id="inputEncabezado" aria-describedby="nombre" placeholder="Ingrese encabezado">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputDescCorta">Descripcion corta</label>
+                                <textarea rows="3" type="text" field="*{descCorta}" name="descCorta" class="form-control" id="inputDescCorta" aria-describedby="desccorta" placeholder="Ingrese descripcion corta"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="inputCuerpoNoticia">Cuerpo noticia</label>
+                                <textarea rows="10" type="text" field="*{cuerpo}" name="cuerpo" class="form-control" id="inputCuerpoNoticia" aria-describedby="cuerponoticia" placeholder="Ingrese cuerpo de la noticia"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button name="enviar" type="submit" class="btn btn-primary float-right mx-3">
+                                Enviar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="footer :: footer">  </div>
+
+</div>
+</body>
+
+</html>

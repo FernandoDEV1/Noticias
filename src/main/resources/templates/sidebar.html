@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul th:fragment="sidebar" class="list-group mb-3">
+    <a th:href="@{/inicio}" href="/"><li class="list-group-item">Inicio</li></a>
+    <a th:href="@{/agregarnoticia}" href="/"><li class="list-group-item">Agregar noticia</li></a>
+</ul>
+</body>
+</html>
